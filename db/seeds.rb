@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+
+20.times do
+  Pet.create(
+  name: Faker::Space.constellation,
+  breed: "Cat",
+  age: Random.rand(18)
+  )
+end
+
+20.times do
+  Pet.create(
+  name: Faker::Pokemon.name,
+  breed: "Dog",
+  age: Random.rand(18)
+  )
+end
