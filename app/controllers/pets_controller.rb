@@ -15,8 +15,9 @@ class PetsController < ApplicationController
     pet = Pet.find(params[:id])
     unless pet.owner
       pet.owner = params[:name]
-
-      render :json => pet.to_json, :callback => params['callback']
+      if pet.save
+        render :json => pet.to_json, :callback => params['callback']
+      end
     else
       render :json => [], :callback => params['callback'], :status => :no_content
     end
