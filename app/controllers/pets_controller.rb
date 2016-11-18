@@ -2,22 +2,23 @@ class PetsController < ApplicationController
 
   def index
     pets = Pet.all
-
     render :json => pets.to_json, :callback => params['callback']
   end
 
   def show
     pet = Pet.find(params[:id])
-    render json: pet
+
+    render :json => pet.to_json, :callback => params['callback']
   end
 
   def call_dibs
     pet = Pet.find(params[:id])
     unless pet.dibs = true
       pet.dibs = true
-      message = "#{pet.name} is all yours!"
+
+      render :json => pet.to_json, :callback => params['callback']
     else
-      message = "Pet already has been dibbed!"
+      render :json => [], :callback => params['callback'], :status => :no_content
     end
   end
 
