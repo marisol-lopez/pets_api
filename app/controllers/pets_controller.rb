@@ -2,7 +2,8 @@ class PetsController < ApplicationController
 
   def index
     pets = Pet.all
-    render json: pets
+
+    render :json => pets.to_json, :callback => params['callback']
   end
 
   def show
