@@ -2,13 +2,15 @@ class PetsController < ApplicationController
 
   def index
     pets = Pet.all
-    render :json => pets.to_json, :callback => params['callback']
+    render :json => pets.to_json, :callback => params['callback'],
+      :status => :ok
   end
 
   def show
     pet = Pet.find(params[:id])
 
-    render :json => pet.to_json, :callback => params['callback']
+    render :json => pet.to_json, :callback => params['callback'],
+      :status => :ok
   end
 
   def dibs
@@ -16,7 +18,8 @@ class PetsController < ApplicationController
     unless pet.owner
       pet.owner = params[:name]
       if pet.save
-        render :json => pet.to_json, :callback => params['callback']
+        render :json => pet.to_json, :callback => params['callback'],
+      :status => :ok
       end
     else
       render :json => [], :callback => params['callback'], :status => :no_content
