@@ -11,10 +11,10 @@ class PetsController < ApplicationController
     render :json => pet.to_json, :callback => params['callback']
   end
 
-  def call_dibs
+  def dibs
     pet = Pet.find(params[:id])
-    unless pet.dibs = true
-      pet.dibs = true
+    unless pet.owner
+      pet.owner = params[:name]
 
       render :json => pet.to_json, :callback => params['callback']
     else

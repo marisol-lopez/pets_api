@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :pets, except: [:destroy, :create, :update]
 
-  post '/pets/call_dibs', to: 'pets#call_dibs', as: 'call_dibs'
+  post '/pets/:id/dibs', to: 'pets#dibs', as: 'dibs'
 end
