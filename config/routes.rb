@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :pets, except: [:destroy, :update]
 
-  put '/pets/:id/dibs', to: 'pets#dibs', as: 'dibs'
+  put '/pets/dibs', to: 'pets#dibs', as: 'dibs'
 end
