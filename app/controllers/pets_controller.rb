@@ -13,6 +13,39 @@ class PetsController < ApplicationController
       :status => :ok
   end
 
+
+  def create
+    pet = Pet.new(
+      name: params[:name],
+      age: params[:age],
+      breed: params[:breed],
+      about: params[:about],
+      vaccinated: params[:vaccinated]
+    )
+
+    if pet.save
+      render :json => pet.to_json, :status => :ok
+    end
+  end
+
+
+  def destroy
+    pet = Pet.find(params[:id])
+
+    if pet.destroy
+      render :json => pet.to_json, :status => :no_content
+    end
+  end
+
+  def vaccinated
+    pet = Pet.find(params[:id])
+    pet.vaccinated = params[:vaccinated]
+
+    if pet.save
+      render :json => pet.to_json, :status => :ok
+    end
+  end
+
   def dibs
     pet = Pet.find(params[:id])
     unless pet.owner
