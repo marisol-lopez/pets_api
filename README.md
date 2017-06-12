@@ -1,6 +1,6 @@
 # Pets APIs
 
-API hosted on `petdibs.herokuapp.com`
+API hosted on `petdibs.herokuapp.com/pets`
 
 ## Endpoints
 - `GET /pets` returns all pets
